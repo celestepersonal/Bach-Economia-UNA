@@ -1,5 +1,4 @@
 const materias = [
-  // Semestres 1-8 (mismo contenido del anterior pero extendido con validaciones nuevas)
   {codigo:"EGC", nombre:"Estudios generales Ciencias", requisitos: [], semestre:1},
   {codigo:"EGS", nombre:"Estudios generales Sociales", requisitos: [], semestre:1},
   {codigo:"ECF400", nombre:"Introducción a la Economía I", requisitos: [], semestre:1},
@@ -68,16 +67,24 @@ function puedeDesbloquear(materia) {
          semestres.every(n => semestreAprobado(n));
 }
 
-function toggleMateria(codigo) {
+function aprobarMateria(codigo) {
+  if (!aprobadas.includes(codigo)) {
+    const materia = materias.find(m => m.codigo === codigo);
+    if (!puedeDesbloquear(materia)) return false;
+    aprobadas.push(codigo);
+    guardar();
+    crearMalla();
+    return true;
+  }
+  return false;
+}
+
+function desaprobarMateria(codigo) {
   if (aprobadas.includes(codigo)) {
     aprobadas = aprobadas.filter(c => c !== codigo);
-  } else {
-    const materia = materias.find(m => m.codigo === codigo);
-    if (!puedeDesbloquear(materia)) return;
-    aprobadas.push(codigo);
+    guardar();
+    crearMalla();
   }
-  guardar();
-  crearMalla();
 }
 
 function crearMalla() {
@@ -105,7 +112,12 @@ function crearMalla() {
       }
 
       btn.textContent = `${m.codigo} - ${m.nombre}`;
-      btn.onclick = () => toggleMateria(m.codigo);
+
+      // Clic para aprobar (solo si puede)
+      btn.onclick = () => aprobarMateria(m.codigo);
+
+      // Doble clic para desaprobar siempre
+      btn.ondblclick = () => desaprobarMateria(m.codigo);
 
       sem.appendChild(btn);
     });
@@ -116,31 +128,4 @@ function crearMalla() {
   crearOptativas();
 }
 
-function crearOptativas() {
-  const cont = document.getElementById("optativas");
-  cont.innerHTML = "";
-
-  optativasDisponibles.forEach(opt => {
-    const box = document.createElement("div");
-    box.className = "optativa";
-    box.textContent = opt;
-
-    if (optativasTomadas.includes(opt)) {
-      box.classList.add("seleccionada");
-    }
-
-    box.onclick = () => {
-      if (optativasTomadas.includes(opt)) {
-        optativasTomadas = optativasTomadas.filter(o => o !== opt);
-      } else {
-        optativasTomadas.push(opt);
-      }
-      guardar();
-      crearOptativas();
-    };
-
-    cont.appendChild(box);
-  });
-}
-
-crearMalla();
+function c
