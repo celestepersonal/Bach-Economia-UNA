@@ -1,0 +1,63 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  padding: 20px;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  color: #006494;
+  margin-bottom: 30px;
+}
+
+.malla {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.semestre {
+  border: 2px solid #b3dfff;
+  border-radius: 10px;
+  padding: 15px;
+  width: 300px;
+  background-color: #e6f7ff;
+}
+
+.semestre h2 {
+  text-align: center;
+  color: #006494;
+  margin-bottom: 10px;
+}
+
+.materia {
+  display: block;
+  margin: 8px 0;
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid #a0cfff;
+}
+
+.materia.bloqueada {
+  background-color: #e0f4ff;
+  color: #297ab7;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.materia.activa {
+  background-color: #e0f4ff;
+  color: #297ab7;
+}
+
+.materia.aprobada {
+  background-color: #d7c3f2;
+  color: #5a009d;
+  font-weight: bold;
+}
