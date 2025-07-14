@@ -3,11 +3,13 @@ body {
   background-color: #f0f8ff;
   padding: 20px;
   color: #333;
+  margin: 0;
 }
 
 h1, h2 {
   text-align: center;
   color: #006494;
+  margin-bottom: 20px;
 }
 
 .malla {
@@ -23,14 +25,16 @@ h1, h2 {
   padding: 15px;
   width: 300px;
   background-color: #e6f7ff;
+  box-sizing: border-box;
 }
 
 .semestre h2 {
-  text-align: center;
+  margin-top: 0;
   color: #006494;
 }
 
 .materia {
+  user-select: none;
   display: block;
   margin: 8px 0;
   padding: 10px;
@@ -40,28 +44,33 @@ h1, h2 {
   cursor: pointer;
   transition: all 0.3s ease;
   border: 1px solid #a0cfff;
+  color: #297ab7;
+  background-color: #e0f4ff;
 }
 
 .materia.bloqueada {
   background-color: #e0f4ff;
   color: #297ab7;
   cursor: not-allowed;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 .materia.activa {
-  background-color: #e0f4ff;
-  color: #297ab7;
+  background-color: #c7e4ff;
+  color: #125a9c;
+  cursor: pointer;
 }
 
 .materia.aprobada {
   background-color: #d7c3f2;
   color: #5a009d;
-  font-weight: bold;
+  font-weight: bolder;
+  cursor: pointer;
 }
 
 .optativas-titulo {
   margin-top: 40px;
+  color: #006494;
 }
 
 .optativas {
@@ -70,6 +79,7 @@ h1, h2 {
   justify-content: center;
   gap: 12px;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .optativa {
@@ -80,10 +90,17 @@ h1, h2 {
   font-weight: bold;
   color: #004b87;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
 }
 
 .optativa.seleccionada {
   background-color: #d7c3f2;
   color: #5a009d;
+}
+
+@media (max-width: 700px) {
+  .semestre {
+    width: 100%;
+  }
 }
