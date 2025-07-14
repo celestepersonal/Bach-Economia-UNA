@@ -5,10 +5,9 @@ body {
   color: #333;
 }
 
-h1 {
+h1, h2 {
   text-align: center;
   color: #006494;
-  margin-bottom: 30px;
 }
 
 .malla {
@@ -29,7 +28,6 @@ h1 {
 .semestre h2 {
   text-align: center;
   color: #006494;
-  margin-bottom: 10px;
 }
 
 .materia {
@@ -60,4 +58,32 @@ h1 {
   background-color: #d7c3f2;
   color: #5a009d;
   font-weight: bold;
+}
+
+.optativas-titulo {
+  margin-top: 40px;
+}
+
+.optativas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+}
+
+.optativa {
+  padding: 10px 14px;
+  background-color: #f5fcff;
+  border: 1px solid #87cfff;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #004b87;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.optativa.seleccionada {
+  background-color: #d7c3f2;
+  color: #5a009d;
 }
